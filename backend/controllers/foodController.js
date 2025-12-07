@@ -1,5 +1,5 @@
 import foodModel from "../models/foodModel.js";
-
+//new code
 const addFood = async (req, res) => {
   try {
     // Safety check

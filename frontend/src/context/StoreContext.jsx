@@ -10,7 +10,8 @@ const StoreContextProvider = (props) => {
 
     const [cardItems, setCardItems] = useState({});
 
-
+    const url = "http://localhost:4000" ;
+    const [token,setToken] = useState("");
 
     const addToCard = (itemId) => {
         if (!cardItems[itemId]) {
@@ -45,7 +46,10 @@ const StoreContextProvider = (props) => {
         setCardItems,
         addToCard,
         removeFromCard,
-        getTotalCardAmount
+        getTotalCardAmount,
+        url,
+        token,
+        setToken
     }
 
 

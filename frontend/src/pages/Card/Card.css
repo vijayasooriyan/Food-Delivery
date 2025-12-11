@@ -1,8 +1,8 @@
-.card{
+.cart{
     margin-top: 100px;
     
 }
-.card-items-title{
+.cart-items-title{
     display: grid;
     grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr 0.5fr;
     align-items: center;
@@ -10,42 +10,42 @@
     font-size: max(1vw , 12px);
 
 }
-.card-items-item{
+.cart-items-item{
     margin:10px 0px;
     color: #000;
 }
-.card-items-item img{
+.cart-items-item img{
     width:50px;
 }
-.card hr{
+.cart hr{
     height: 1px;
     background-color:#e2e2e2 ;
     border: none;
 }
-.card-items-item .cross{
+.cart-items-item .cross{
     cursor: pointer;
 }
-.card-bottom{
+.cart-bottom{
     margin-top: 80px;
     display: flex;
     justify-content: space-between;
     gap: max(12vw,20px);
 }
-.card-total{
+.cart-total{
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
-.card-total-details{
+.cart-total-details{
     display: flex;
     justify-content: space-between;
     color: #555;
 }
-.card-total hr{
+.cart-total hr{
     margin: 10px 0px;
 }
-.card-total button{
+.cart-total button{
     border: none;
     color: white;
     background-color: #8614af;
@@ -55,13 +55,13 @@
     cursor: pointer;
     margin-top: 10px;
 }
-.card-promocode{
+.cart-promocode{
     flex: 1;
 }
-.card-promocode p{
+.cart-promocode p{
     color: #555;
 }
-.card-promocode-input{
+.cart-promocode-input{
     margin-top: 10px;
     display: flex;;
     justify-content: space-between;
@@ -69,13 +69,13 @@
     background-color: #e2e2e2;
     border-radius: 4px;
 }
-.card-promocode-input input{
+.cart-promocode-input input{
     background: transparent;
     border:none;
     outline: none;
     padding-left: 10px;
 }
-.card-promocode-input button{
+.cart-promocode-input button{
     width:max(10vw,150px);
     padding: 12px 5px;
     background-color: #000;
@@ -85,10 +85,10 @@
     cursor: pointer;
 }
 @media (max-width:750px) {
-    .card-bottom{
+    .cart-bottom{
         flex-direction: column-reverse;
     }
-    .card-promocode{
+    .cart-promocode{
         justify-content: start;
     }
     

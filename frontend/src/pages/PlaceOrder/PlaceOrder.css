@@ -30,6 +30,6 @@
     width: 100%;
     max-width: max(40%,500px);
 }
-.place-order .card-total button{
+.place-order .cart-total button{
     margin-top: 30px;
 }

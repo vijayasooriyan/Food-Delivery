@@ -8,6 +8,7 @@ import PlaceOrder from './pages/PlaceOrder/PlaceOrder'
 import './App.css'
 import Footer from './components/Footer/Footer'
 import LoginPopup from './components/LoginPopup/LoginPopup'
+import Verify from './pages/Verify/Verify'
 
 
 const App = () => {
@@ -21,8 +22,9 @@ const App = () => {
       <Navbar setShowLogin={setShowLogin} />
       <Routes>
            <Route path='/' element={<Home />} />
-           <Route path='/card' element={<Card />} />
+           <Route path='/cart' element={<Card />} />
            <Route path='/order' element={<PlaceOrder />} />
+           <Route path='/Verify' element={<Verify />} />
       </Routes>
     </div>
     <Footer />

@@ -15,14 +15,18 @@ const  port=process.env.PORT || 4000
 //middleware
 app.use(express.json())
 app.use(cors({
-  origin: [
-    "https://food-delivery-a7o1f0pja-vijayasooriyan-kamarajahs-projects.vercel.app",
-    "https://food-delivery-iewk-rw1376rw9-vijayasooriyan-kamarajahs-projects.vercel.app",
-    "https://food-delivery-vijayasooriyan-kamarajahs-projects.vercel.app",
-    "https://food-delivery-iewk-vijayasooriyan-kamarajahs-projects.vercel.app",
-    "http://localhost:5173",
-    "http://localhost:5174"
-  ]
+  origin: function(origin, callback) {
+    const allowed = [
+      "http://localhost:5173",
+      "http://localhost:5174",
+      "http://localhost:5175"
+    ];
+    if (!origin || allowed.includes(origin) || origin.endsWith(".vercel.app")) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  }
 }))
 
 

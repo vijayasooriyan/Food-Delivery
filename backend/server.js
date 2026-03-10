@@ -15,18 +15,12 @@ const  port=process.env.PORT || 4000
 //middleware
 app.use(express.json())
 app.use(cors({
-  origin: function(origin, callback) {
-    const allowed = [
-      "http://localhost:5173",
-      "http://localhost:5174",
-      "http://localhost:5175"
-    ];
-    if (!origin || allowed.includes(origin) || origin.endsWith(".vercel.app")) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  }
+  origin: [
+    "https://food-delivery-lime-ten.vercel.app",
+    "https://food-delivery-1ku6.vercel.app",
+    "http://localhost:5173",
+    "http://localhost:5174"
+  ]
 }))
 
 

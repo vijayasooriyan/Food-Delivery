@@ -9,9 +9,9 @@ node_modules/
 # build output
 dist/
 
-# uploads
-backend/uploads/*
-!backend/uploads/.gitkeep
+# uploads (uncomment below to ignore uploaded images)
+# backend/uploads/*
+# !backend/uploads/.gitkeep
 
 # IDE
 .vscode/

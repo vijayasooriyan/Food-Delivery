@@ -13,14 +13,17 @@
     font-size: 30px;
     margin-bottom: 50px;
     font-weight: 600;
+    color: var(--text-heading);
 }
 .place-order-left input{
     margin-bottom: 15px;
     width: 100%;
     padding: 10px;
     border-radius: 4px;
-    border: 1px solid #c5c5c5;
-    outline-color: blueviolet;
+    border: 1px solid var(--border-input);
+    outline-color: var(--accent);
+    background: var(--bg-input);
+    color: var(--text-primary);
 }
 .place-order-left .multi-fields{
     display: flex;

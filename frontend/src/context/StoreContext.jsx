@@ -5,22 +5,48 @@ export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
 
-    const [cartItems, setCartItems] = useState({}); // ✅ initialized to empty object
+    const [cartItems, setCartItems] = useState({});
     const [food_list, setFoodList] = useState([]);
     const [token, setToken] = useState("");
-    const url = "http://localhost:4000";
+    const [searchQuery, setSearchQuery] = useState("");
+    const [darkMode, setDarkMode] = useState(() => {
+        return localStorage.getItem("darkMode") === "true";
+    });
+    const url = import.meta.env.VITE_API_URL || "http://localhost:4000";
+
+    // Apply theme to document
+    useEffect(() => {
+        document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
+        localStorage.setItem("darkMode", darkMode);
+    }, [darkMode]);
+
+    const toggleDarkMode = () => setDarkMode(prev => !prev);
+
+    const logout = () => {
+        localStorage.removeItem("token");
+        setToken("");
+        setCartItems({});
+    };
 
     const addToCart = async (itemId) => {
         setCartItems(prev => ({ ...prev, [itemId]: (prev[itemId] || 0) + 1 }));
         if (token) {
-            await axios.post(url + "/api/cart/add", { itemId }, { headers: { token } });
+            try {
+                await axios.post(url + "/api/cart/add", { itemId }, { headers: { token } });
+            } catch (err) {
+                if (err.response?.status === 401) logout();
+            }
         }
     };
 
     const removeFromCart = async (itemId) => {
         setCartItems(prev => ({ ...prev, [itemId]: Math.max((prev[itemId] || 1) - 1, 0) }));
         if (token) {
-            await axios.post(url + "/api/cart/remove", { itemId }, { headers: { token } });
+            try {
+                await axios.post(url + "/api/cart/remove", { itemId }, { headers: { token } });
+            } catch (err) {
+                if (err.response?.status === 401) logout();
+            }
         }
     };
 
@@ -46,11 +72,15 @@ const StoreContextProvider = (props) => {
         }
     };
 
-    const loadCartData = async (token) => {
+    const loadCartData = async (savedToken) => {
         try {
-            const response = await axios.post(url + "/api/cart/get", {}, { headers: { token } });
+            const response = await axios.post(url + "/api/cart/get", {}, { headers: { token: savedToken } });
             setCartItems(response.data.cartdata || {});
         } catch (err) {
+            if (err.response?.status === 401) {
+                localStorage.removeItem("token");
+                setToken("");
+            }
             console.error("Failed to load cart data:", err);
         }
     };
@@ -60,8 +90,15 @@ const StoreContextProvider = (props) => {
             await fetchFoodList();
             const storedToken = localStorage.getItem("token");
             if (storedToken) {
-                setToken(storedToken);
-                await loadCartData(storedToken);
+                try {
+                    const res = await axios.post(url + "/api/cart/get", {}, { headers: { token: storedToken } });
+                    setToken(storedToken);
+                    setCartItems(res.data.cartdata || {});
+                } catch (err) {
+                    console.warn("Token invalid, clearing.");
+                    localStorage.removeItem("token");
+                    setToken("");
+                }
             }
         }
         loadData();
@@ -77,7 +114,12 @@ const StoreContextProvider = (props) => {
             getTotalCartAmount,
             url,
             token,
-            setToken
+            setToken,
+            logout,
+            searchQuery,
+            setSearchQuery,
+            darkMode,
+            toggleDarkMode
         }}>
             {props.children}
         </StoreContext.Provider>

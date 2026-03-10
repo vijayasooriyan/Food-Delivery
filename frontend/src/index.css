@@ -1,5 +1,107 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
+/* ===== Light Theme (default) ===== */
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9f9f9;
+  --bg-card: #ffffff;
+  --bg-input: #ffffff;
+  --bg-input-alt: #e2e2e2;
+  --bg-dropdown: #fff2ef;
+  --bg-overlay: #00000090;
+  --bg-footer: #2d2b3c;
+
+  --text-primary: #333333;
+  --text-secondary: #555555;
+  --text-tertiary: #808080;
+  --text-muted: #999999;
+  --text-heading: #333333;
+  --text-link: #790979;
+
+  --accent: #790979;
+  --accent-hover: #c51fc5;
+  --accent-light: #bd87bd;
+  --accent-btn: #8614af;
+  --accent-orange: #ff6b35;
+  --accent-orange-hover: #e05a2b;
+  --accent-price: #ca14c1;
+
+  --border: #e0e0e0;
+  --border-light: #f0f0f0;
+  --border-input: #c5c5c5;
+  --divider: #e2e2e2;
+
+  --shadow: rgba(0, 0, 0, 0.1);
+  --shadow-strong: rgba(0, 0, 0, 0.15);
+  --shadow-card: 0px 0px 10px rgba(0,0,0,0.08);
+  --shadow-card-hover: 0px 0px 15px #ff6600;
+
+  --food-counter-bg: #ffffff;
+  --search-bg: #ffffff;
+  --search-dropdown-hover: #fff5f0;
+  --table-header-bg: #f8f8f8;
+  --table-row-hover: #fdf5f0;
+  --badge-paid-bg: #e6f9ee;
+  --badge-paid-color: #1a8a47;
+  --badge-pending-bg: #fff3e0;
+  --badge-pending-color: #e65100;
+  --badge-status-bg: #f0e6ff;
+  --badge-status-color: #6a1b9a;
+  --promo-bg: #e2e2e2;
+
+  --transition-theme: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ===== Dark Theme ===== */
+[data-theme="dark"] {
+  --bg-primary: #1a1a2e;
+  --bg-secondary: #16213e;
+  --bg-card: #222244;
+  --bg-input: #2a2a4a;
+  --bg-input-alt: #333366;
+  --bg-dropdown: #2a2a4a;
+  --bg-overlay: #000000cc;
+  --bg-footer: #0f0f23;
+
+  --text-primary: #e8e8f0;
+  --text-secondary: #c0c0d0;
+  --text-tertiary: #a0a0b8;
+  --text-muted: #888899;
+  --text-heading: #f0f0ff;
+  --text-link: #c084fc;
+
+  --accent: #a855f7;
+  --accent-hover: #c084fc;
+  --accent-light: #7c3aed;
+  --accent-btn: #9333ea;
+  --accent-orange: #fb923c;
+  --accent-orange-hover: #f97316;
+  --accent-price: #e879f9;
+
+  --border: #333355;
+  --border-light: #2a2a4a;
+  --border-input: #444466;
+  --divider: #333355;
+
+  --shadow: rgba(0, 0, 0, 0.3);
+  --shadow-strong: rgba(0, 0, 0, 0.5);
+  --shadow-card: 0px 0px 10px rgba(0,0,0,0.3);
+  --shadow-card-hover: 0px 0px 15px rgba(255, 102, 0, 0.4);
+
+  --food-counter-bg: #2a2a4a;
+  --search-bg: #222244;
+  --search-dropdown-hover: #333355;
+  --table-header-bg: #2a2a4a;
+  --table-row-hover: #333355;
+  --badge-paid-bg: #1a3a2a;
+  --badge-paid-color: #4ade80;
+  --badge-pending-bg: #3a2a1a;
+  --badge-pending-color: #fb923c;
+  --badge-status-bg: #2a1a3a;
+  --badge-status-color: #c084fc;
+  --promo-bg: #333366;
+}
+
 *{
   padding: 0;
   margin: 0;
@@ -9,6 +111,9 @@
 }
 body{
   min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: var(--transition-theme);
 }
 a{
   text-decoration: none;

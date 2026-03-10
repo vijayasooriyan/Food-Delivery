@@ -1,5 +1,61 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
+/* ===== Light Theme (default) ===== */
+:root {
+  --bg-primary: #fcfcfc;
+  --bg-secondary: #f9f9f9;
+  --bg-card: #ffffff;
+  --bg-input: #ffffff;
+  --bg-sidebar: #ffffff;
+  --bg-sidebar-active: #fff0ed;
+
+  --text-primary: #333333;
+  --text-secondary: #6d6d6d;
+  --text-tertiary: #505050;
+  --text-muted: #a9a9a9;
+
+  --accent: #790979;
+  --accent-hover: #c51fc5;
+  --accent-btn: #000000;
+  --accent-select: #ffe8e4;
+
+  --border: #a9a9a9;
+  --border-light: #cacaca;
+  --border-active: rgb(183, 35, 183);
+
+  --shadow: rgba(0, 0, 0, 0.08);
+  --shadow-strong: rgba(0, 0, 0, 0.15);
+
+  --transition-theme: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* ===== Dark Theme ===== */
+[data-theme="dark"] {
+  --bg-primary: #1a1a2e;
+  --bg-secondary: #16213e;
+  --bg-card: #222244;
+  --bg-input: #2a2a4a;
+  --bg-sidebar: #16213e;
+  --bg-sidebar-active: #2a1a3a;
+
+  --text-primary: #e8e8f0;
+  --text-secondary: #c0c0d0;
+  --text-tertiary: #b0b0c0;
+  --text-muted: #666680;
+
+  --accent: #a855f7;
+  --accent-hover: #c084fc;
+  --accent-btn: #9333ea;
+  --accent-select: #2a1a3a;
+
+  --border: #333355;
+  --border-light: #444466;
+  --border-active: #a855f7;
+
+  --shadow: rgba(0, 0, 0, 0.3);
+  --shadow-strong: rgba(0, 0, 0, 0.5);
+}
+
 *{
   padding: 0;
   margin: 0;
@@ -8,7 +64,9 @@
 }
 body{
   min-height: 100vh;
-  background-color: #fcfcfc;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: var(--transition-theme);
 }
 a{
   text-decoration: none;
@@ -17,7 +75,7 @@ a{
 hr{
   border: none;
   height: 1px;
-  background-color: #a9a9a9;
+  background-color: var(--border);
 }
 .app-content{
   display: flex;

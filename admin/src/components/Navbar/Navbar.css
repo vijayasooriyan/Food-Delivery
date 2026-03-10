@@ -3,10 +3,39 @@
    justify-content: space-between;
    align-items: center;
    padding: 8px 4%;
+   background-color: var(--bg-primary);
+   transition: var(--transition-theme);
 }
 .navbar .logo {
     width: max(10%,80px);
 }
 .navbar .profile{
     width: 40px;
+}
+
+.navbar-right-admin {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.theme-toggle {
+    background: var(--bg-card);
+    border: 1.5px solid var(--border);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 17px;
+    padding: 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px var(--shadow);
+}
+
+.theme-toggle:hover {
+    transform: rotate(20deg) scale(1.1);
+    box-shadow: 0 4px 10px var(--shadow-strong);
 }

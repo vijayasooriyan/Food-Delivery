@@ -46,13 +46,23 @@ const onChangeHandler = (event) =>{
           items:orderItems,
           amount:getTotalCartAmount()+2,
        }
-       let response = await axios.post(url+"/api/order/place",orderData,{headers:{token}})
-       if(response.data.success){
-          const {session_url} = response.data;
-          window.location.replace(session_url);
-       }
-       else{
-          alert("Error");
+       try {
+         let response = await axios.post(url+"/api/order/place",orderData,{headers:{token}})
+         if(response.data.success){
+            const {session_url} = response.data;
+            window.location.replace(session_url);
+         }
+         else{
+            alert("Error placing order");
+         }
+       } catch (err) {
+          if (err.response?.status === 401) {
+            alert("Session expired. Please log in again.");
+            localStorage.removeItem("token");
+            navigate('/');
+          } else {
+            alert("Error placing order");
+          }
        }
   }
 

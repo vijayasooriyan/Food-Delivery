@@ -27,7 +27,7 @@
     color: white;
 }
 .header-contents button{
-    background-color: #790979;
+    background-color: var(--accent);
     color: white;
     border: none;
     padding: 1vw 2.3vw;
@@ -37,7 +37,7 @@
     transition: all 0.3s ease;
 }
 .header-contents button:hover{
-    background-color: #c51fc5;
+    background-color: var(--accent-hover);
 }
 
 @media (max-width:1050px){

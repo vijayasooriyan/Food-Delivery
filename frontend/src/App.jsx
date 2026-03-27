@@ -10,7 +10,7 @@ import Footer from './components/Footer/Footer'
 import LoginPopup from './components/LoginPopup/LoginPopup'
 import Verify from './pages/Verify/Verify'
 import MyOrders from './pages/MyOrders/MyOrders'
-
+import Chatbot from "./components/Chatbot/Chatbot"
 
 const App = () => {
 
@@ -28,6 +28,7 @@ const App = () => {
            <Route path='/verify' element={<Verify />} />
            <Route path='/myorders' element={<MyOrders/>} />
       </Routes>
+      <Chatbot />
     </div>
     <Footer />
     </>

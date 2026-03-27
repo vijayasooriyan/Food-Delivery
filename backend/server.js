@@ -40,7 +40,25 @@ app.get("/",(req,res)=>{
     res.send("API Working")
 })
 
+// 404 handler for undefined routes
+app.use((req,res)=>{
+    res.status(404).json({
+        success: false,
+        message: "Route not found",
+        path: req.originalUrl
+    })
+})
+
+// Global error handler
+app.use((err,req,res,next)=>{
+    console.error("Server Error:", err)
+    res.status(err.status || 500).json({
+        success: false,
+        message: err.message || "Internal Server Error",
+        error: process.env.NODE_ENV === "development" ? err : {}
+    })
+})
+
 app.listen(port,()=>{
     console.log(`Server Started on http://localhost:${port}`)
 })
-// check the commit

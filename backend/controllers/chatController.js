@@ -5,8 +5,23 @@ const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
 export const chatWithBot = async (req, res) => {
   try {
+    // Validate request body
     const { message, history } = req.body;
-    // history = array of { role: "user"/"assistant", content: "..." }
+    
+    if (!message || typeof message !== "string") {
+      return res.status(400).json({ 
+        success: false, 
+        message: "Message is required and must be a string" 
+      });
+    }
+
+    // Check if Groq API key is set
+    if (!process.env.GROQ_API_KEY) {
+      return res.status(500).json({ 
+        success: false, 
+        message: "Groq API key is not configured" 
+      });
+    }
 
     // ── STEP 1: RETRIEVAL ──────────────────────────────────────────
     // Fetch all food items from your MongoDB (your own data)
@@ -54,6 +69,14 @@ If a question is unrelated to food or this app, politely say you can only help w
     res.json({ success: true, reply });
   } catch (error) {
     console.error("Chatbot error:", error);
-    res.status(500).json({ success: false, message: "Chatbot error" });
+    
+    // Provide specific error messages
+    const errorMessage = error.message || "Chatbot error";
+    const statusCode = error.status || 500;
+    
+    res.status(statusCode).json({ 
+      success: false, 
+      message: errorMessage 
+    });
   }
 };
